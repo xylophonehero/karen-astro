@@ -1,16 +1,21 @@
 ---
-
+import SiteLayout from "../layouts/SiteLayout.astro";
+import Hero from "../components/Hero.astro";
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<SiteLayout title="Karen worrall">
+  <main class="grid flex-1 grid-cols-2 items-stretch">
+    <Hero
+      title="Speaking"
+      bgImage="https://i.pinimg.com/originals/d0/7e/b9/d07eb9728516dd54bc9cd6e64207eb86.jpg"
+      linkText="Hear more"
+      linkUrl="/speaking"
+    />
+    <Hero
+      title="Writing"
+      bgImage="https://media.istockphoto.com/id/815327802/photo/the-artists-hands-hold-a-brush.jpg?s=170667a&w=0&k=20&c=lNDFs55FoUReR0ylRDV8HGCyqwS-MXo5tRf-cWgR914="
+      linkText="Read more"
+      linkUrl="/writing"
+    />
+  </main>
+</SiteLayout>

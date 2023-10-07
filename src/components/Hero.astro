@@ -1,0 +1,15 @@
+---
+const { title, bgImage, linkText, linkUrl } = Astro.props;
+---
+
+<div
+  class="flex h-full flex-col bg-cover"
+  style={{ backgroundImage: `url(${bgImage})` }}
+>
+  <div
+    class="mx-auto flex h-full w-full max-w-lg flex-col justify-center space-y-4 px-6 text-center"
+  >
+    <h2 class="text-5xl font-bold text-secondary">{title}</h2>
+    <a href={linkUrl} class="btn btn-primary">{linkText}</a>
+  </div>
+</div>

@@ -1,5 +1,6 @@
 ---
 import Header from "../components/Header.astro";
+import NavMenu from "../components/NavMenu.astro";
 import "../app.css";
 
 const { title } = Astro.props;
@@ -13,9 +14,21 @@ const { title } = Astro.props;
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
   </head>
-  <body class="flex h-screen flex-col">
-    <Header />
-    <slot />
-    <footer></footer>
+  <body>
+    <div class="drawer drawer-end">
+      <input type="checkbox" id="nav-menu" class="drawer-toggle" />
+      <div class="drawer-content flex h-screen flex-col">
+        <Header />
+        <slot />
+        <footer></footer>
+      </div>
+      <div class="drawer-side">
+        <label for="nav-menu" aria-label="close sidebar" class="drawer-overlay"
+        ></label>
+        <div class="min-h-full w-80 bg-base-200">
+          <NavMenu />
+        </div>
+      </div>
+    </div>
   </body>
 </html>

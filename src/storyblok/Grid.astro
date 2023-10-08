@@ -1,0 +1,19 @@
+---
+import { storyblokEditable } from "@storyblok/astro";
+import StoryblokComponent from "@storyblok/astro/StoryblokComponent.astro";
+const { blok } = Astro.props;
+---
+
+<div class="custom-grid grid gap-8" {...storyblokEditable(blok)}>
+  {
+    blok.items?.map((blok) => {
+      return <StoryblokComponent blok={blok} />;
+    })
+  }
+</div>
+
+<style>
+  .custom-grid {
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  }
+</style>

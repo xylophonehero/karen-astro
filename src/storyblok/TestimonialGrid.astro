@@ -1,5 +1,16 @@
 ---
+import { storyblokEditable } from "@storyblok/astro";
+import Testimonial from "./Testimonial.astro";
 const { blok } = Astro.props;
 ---
 
-<pre>{JSON.stringify(blok, null, 2)}</pre>
+<div class="testimonial-grid grid gap-8" {...storyblokEditable(blok)}>
+  {blok.testimonials.map((blok) => <Testimonial blok={blok} />)}
+  {blok.testimonials.map((blok) => <Testimonial blok={blok} />)}
+</div>
+
+<style>
+  .testimonial-grid {
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  }
+</style>

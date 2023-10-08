@@ -27,9 +27,14 @@ const { data } = await sbAPI.get(`cdn/stories/${slug}`, {
   resolve_relations: ["testimonial_grid.testimonials"],
 });
 
-const story = data.story;
+const { content, name } = data.story;
 ---
 
-<SiteLayout title={story.title}>
-  <StoryblokComponent blok={story.content} />
+<SiteLayout title={name}>
+  <header class="px-4 py-16 text-center">
+    <h1 class="text-5xl font-bold text-primary">
+      {name}
+    </h1>
+  </header>
+  <StoryblokComponent blok={content} />
 </SiteLayout>

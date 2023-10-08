@@ -5,14 +5,26 @@ import RichTextRenderer from "storyblok-rich-text-astro-renderer/RichTextRendere
 const { blok } = Astro.props;
 ---
 
-<div class="[&>div]:not-prose prose" {...storyblokEditable(blok)}>
-  <RichTextRenderer
-    content={blok.text}
-    resolver={(blok) => {
-      return {
-        component: StoryblokComponent,
-        props: { blok },
-      };
-    }}
-  />
-</div>
+<RichTextRenderer
+  {...storyblokEditable(blok)}
+  class="wrapper prose grid max-w-none gap-x-4 py-8"
+  content={blok.text}
+  resolver={(blok) => {
+    return {
+      component: StoryblokComponent,
+      props: { blok },
+    };
+  }}
+/>
+
+<style>
+  .wrapper {
+    grid-template-columns: 1fr minmax(0px, 80ch) 1fr;
+  }
+  .wrapper > :global(*):not(.full-bleed) {
+    grid-column: 2;
+  }
+  .wrapper > :global(div:not(:first-child)) {
+    margin-top: 64px;
+  }
+</style>

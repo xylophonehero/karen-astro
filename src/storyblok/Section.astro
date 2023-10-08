@@ -4,10 +4,22 @@ import StoryblokComponent from "@storyblok/astro/StoryblokComponent.astro";
 const { blok } = Astro.props;
 ---
 
-<section {...storyblokEditable(blok)}>
+<section class="wrapper grid gap-x-4 py-8" {...storyblokEditable(blok)}>
   {
     blok.content?.map((blok) => {
       return <StoryblokComponent blok={blok} />;
     })
   }
 </section>
+
+<style>
+  .wrapper {
+    grid-template-columns: 1fr minmax(0px, 100ch) 1fr;
+  }
+  .wrapper > :global(*):not(.full-bleed) {
+    grid-column: 2;
+  }
+  .wrapper > :global(div:not(:first-child)) {
+    margin-top: 64px;
+  }
+</style>

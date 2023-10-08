@@ -1,0 +1,12 @@
+---
+import { storyblokEditable } from "@storyblok/astro";
+const { blok } = Astro.props;
+const { title, description } = blok;
+---
+
+<div class="card bg-primary-content shadow-lg" {...storyblokEditable(blok)}>
+  <div class="card-body">
+    <div class="card-title">{title}</div>
+    <div>{description}</div>
+  </div>
+</div>

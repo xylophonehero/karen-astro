@@ -8,7 +8,8 @@ export async function getStaticPaths() {
 
   const { data } = await sbApi.get("cdn/stories/", {
     content_type: "page",
-    version: "draft",
+    version:
+      import.meta.env.PUBLIC_ENV === "production" ? "published" : "draft",
   });
 
   const stories = Object.values(data.stories);

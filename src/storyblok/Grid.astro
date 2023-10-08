@@ -2,14 +2,18 @@
 import { storyblokEditable } from "@storyblok/astro";
 import StoryblokComponent from "@storyblok/astro/StoryblokComponent.astro";
 const { blok } = Astro.props;
+const { title, items } = blok;
 ---
 
-<div class="custom-grid grid gap-8" {...storyblokEditable(blok)}>
-  {
-    blok.items?.map((blok) => {
-      return <StoryblokComponent blok={blok} />;
-    })
-  }
+<div class="space-y-4">
+  <h3 class="text-2xl font-bold empty:hidden">{title}</h3>
+  <div class="custom-grid grid gap-8" {...storyblokEditable(blok)}>
+    {
+      items?.map((blok) => {
+        return <StoryblokComponent blok={blok} />;
+      })
+    }
+  </div>
 </div>
 
 <style>

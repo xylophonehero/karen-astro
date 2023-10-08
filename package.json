@@ -3,14 +3,16 @@
   "type": "module",
   "version": "0.0.1",
   "scripts": {
-    "dev": "astro dev",
+    "dev": "PUBLIC_ENV=development astro dev",
     "start": "astro dev",
-    "build": "astro build",
+    "build:production": "PUBLIC_ENV=production astro build",
+    "build:preview": "PUBLIC_ENV=preview astro build",
     "preview": "astro preview",
     "astro": "astro",
     "format": "prettier --write ."
   },
   "dependencies": {
+    "@astrojs/netlify": "^3.0.2",
     "@astrojs/tailwind": "^5.0.1",
     "@contentful/rich-text-html-renderer": "^16.2.0",
     "@storyblok/astro": "^3.0.1",

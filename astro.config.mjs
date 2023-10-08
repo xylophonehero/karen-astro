@@ -2,7 +2,7 @@ import { defineConfig } from "astro/config";
 import tailwind from "@astrojs/tailwind";
 import storyblok from "@storyblok/astro";
 import { loadEnv } from "vite";
-
+import netlify from "@astrojs/netlify/functions";
 const env = loadEnv("", process.cwd(), "STORYBLOK");
 
 // https://astro.build/config
@@ -13,6 +13,7 @@ export default defineConfig({
     }),
     storyblok({
       accessToken: env.STORYBLOK_TOKEN,
+      bridge: process.env.PUBLIC_ENV !== "production",
       components: {
         page: "storyblok/Page",
         section: "storyblok/Section",
@@ -25,4 +26,6 @@ export default defineConfig({
       },
     }),
   ],
+  output: process.env.PUBLIC_ENV ? "server" : "static",
+  adapter: process.env.PUBLIC_ENV ? netlify() : undefined,
 });

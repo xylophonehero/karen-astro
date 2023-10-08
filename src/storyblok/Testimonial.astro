@@ -3,11 +3,11 @@ import { storyblokEditable } from "@storyblok/astro";
 import { Image } from "astro:assets";
 
 const { blok } = Astro.props;
-const { name, job, testimonial: text, image } = blok.content;
+const { name, job, testimonial, image } = blok.content;
 ---
 
 <div
-  class="not-prose rounded-xl bg-primary-content p-8 shadow-lg"
+  class="rounded-xl bg-primary-content p-8 shadow-lg"
   {...storyblokEditable(blok)}
 >
   <div class="flex items-center space-x-4">
@@ -27,6 +27,6 @@ const { name, job, testimonial: text, image } = blok.content;
   </div>
   <hr class="my-8 border-neutral" />
   <div>
-    {text}
+    {testimonial}
   </div>
 </div>

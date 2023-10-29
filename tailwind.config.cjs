@@ -4,5 +4,9 @@ module.exports = {
   theme: {
     extend: {},
   },
-  plugins: [require("@tailwindcss/typography"), require("daisyui")],
+  plugins: [
+    require("@tailwindcss/container-queries"),
+    require("@tailwindcss/typography"),
+    require("daisyui"),
+  ],
 };

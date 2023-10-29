@@ -1,0 +1,33 @@
+---
+import { storyblokEditable } from "@storyblok/astro";
+import { Image } from "astro:assets";
+
+const { blok } = Astro.props;
+console.log(blok);
+const { title, description, image, tag_list } = blok.content;
+const isHighlighted = typeof window !== "undefined" ? new URL(window.location.href).hash === `#${blok.slug}` : false;
+if(typeof window !== 'undefined') console.log(new URL(window.location.href).hash);
+---
+
+<a
+  href={`#${blok.slug}`}
+  class="card card-compact max-w-sm"
+  {...storyblokEditable(blok)}
+>
+  <figure class="aspect-video">
+    <img
+      src={`${image.filename}/m/384x0/filters:focal(${image.focus})`}
+      alt={image.alt}
+      class="object-none"
+    />
+  </figure>
+  <div class="card-body rounded-b-[inherit] bg-primary-content">
+    <h3 class="card-title">
+      {title}
+    </h3>
+  </div>
+</a>
+
+<script>
+if(typeof window !== 'undefined') console.log(new URL(window.location.href).hash);
+</script>

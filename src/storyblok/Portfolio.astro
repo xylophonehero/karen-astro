@@ -1,0 +1,18 @@
+---
+import { storyblokEditable } from "@storyblok/astro";
+import PortfolioItem from "./PortfolioItem.astro";
+import PortfolioLayout from "../layouts/PortfolioLayout.astro";
+const { blok } = Astro.props;
+---
+
+<PortfolioLayout />
+
+<!-- <div class="portfolio-grid grid gap-8" {...storyblokEditable(blok)}> -->
+<!--   {blok.items.map((blok) => <PortfolioItem blok={blok} />)} -->
+<!-- </div> -->
+<!---->
+<!-- <style> -->
+<!--   .portfolio-grid { -->
+<!--     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); -->
+<!--   } -->
+<!-- </style> -->

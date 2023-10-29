@@ -1,0 +1,12 @@
+---
+import PortfolioGrid from "../components/PortfolioGrid.svelte";
+import { contentfulClient } from "../lib/contentful";
+
+const { items } = await contentfulClient.getEntries({
+  content_type: "portfolio",
+});
+---
+
+<div>
+  <PortfolioGrid client:load items={items} />
+</div>

@@ -25,7 +25,7 @@ const sbAPI = useStoryblokApi();
 const { slug } = Astro.params;
 const { data } = await sbAPI.get(`cdn/stories/${slug}`, {
   version: import.meta.env.PUBLIC_ENV === "production" ? "published" : "draft",
-  resolve_relations: ["testimonial_grid.testimonials"],
+  resolve_relations: ["testimonial_grid.testimonials", "portfolio.items"],
 });
 
 const { content, name } = data.story;
